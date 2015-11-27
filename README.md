@@ -28,8 +28,9 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 A Relief.Valve stream will allow a configurable threshold of terms to pile up before pressure is releived by dropping terms.
 
 ```elixir
-1..100
-    |> Stream.map(fn (i) -> "message #{i}" end)
-    |> Enum.into(Relief.Valve.stream(50))
-    |> Stream.chunk(5) |> Stream.run
+1..20
+|> Stream.map(fn (i) -> "message #{i}" end)
+|> Enum.into(Relief.Valve.stream(10))
+|> Stream.chunk(5)
+|> Enum.to_list
 ```
